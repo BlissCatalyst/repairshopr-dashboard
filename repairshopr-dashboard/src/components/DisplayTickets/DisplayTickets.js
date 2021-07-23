@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Ticket from './Ticket/Ticket';
@@ -7,6 +7,8 @@ import Ticket from './Ticket/Ticket';
 import { Paper } from '@material-ui/core';
 
 function DisplayTickets() {
+    let [tickets, setTickets] =  useState([]);
+    
     useEffect(() => {
         axios.defaults.baseURL = 'https://microchipsds.repairshopr.com/api/v1';
         axios.defaults.headers = { 
@@ -14,25 +16,41 @@ function DisplayTickets() {
             accept: 'application/json',
         };
 
-        console.log(axios.defaults.headers)
+        const getData = async () => {
+            const result = await axios.get('/tickets', { params: { status: 'Not Closed' } })
+            console.log(result.data.tickets)
+            setTickets(result.data.tickets);
+            console.log(tickets);
+        };
 
-        axios.get('/tickets', {
-            params: {
-                status: 'Not Closed'
-            }, 
-        })
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    })   
+        getData();
+
+        // axios.get('/tickets', {
+        //     params: {
+        //         status: 'Not Closed'
+        //     }, 
+        // })
+        // .then(res => {
+        //     console.log(res)
+        //     setTickets(res.data.tickets)
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
+    }, [])   
+
+    function ticketLoop() {
+        console.log('ticketLoop running!')
+            tickets.map(ticket => (
+                <Ticket key={ticket.number} ticketData={ticket}/>
+            ))
+        
+    }
 
     return (
         <div>
             <Paper className='display-tickets'>
-                <Ticket />
+                {ticketLoop()}
             </Paper>
         </div>
     )
