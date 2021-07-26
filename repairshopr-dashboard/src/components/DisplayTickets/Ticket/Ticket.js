@@ -7,7 +7,7 @@ function Ticket(props) {
         
             <Card className="ticket">
                 <Typography variant='h4'>
-                    Hello world!
+                    {props.ticketData.number}
                 </Typography>
             </Card>
         

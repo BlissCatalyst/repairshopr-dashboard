@@ -18,9 +18,7 @@ function DisplayTickets() {
 
         const getData = async () => {
             const result = await axios.get('/tickets', { params: { status: 'Not Closed' } })
-            console.log(result.data.tickets)
             setTickets(result.data.tickets);
-            console.log(tickets);
         };
 
         getData();
@@ -40,19 +38,18 @@ function DisplayTickets() {
     }, [])   
 
     function ticketLoop() {
-        console.log('ticketLoop running!')
-            tickets.map(ticket => (
+            return (tickets.map(ticket => (
                 <Ticket key={ticket.number} ticketData={ticket}/>
-            ))
+            )))
         
     }
 
     return (
-        <div>
+        <>
             <Paper className='display-tickets'>
                 {ticketLoop()}
             </Paper>
-        </div>
+        </>
     )
 }
 
