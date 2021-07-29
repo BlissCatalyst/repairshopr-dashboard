@@ -2,7 +2,6 @@ import React from 'react'
 import { Card, Typography } from '@material-ui/core';
 
 function Ticket(props) {
-    console.log(props);
     return (
         
             <Card className="ticket">

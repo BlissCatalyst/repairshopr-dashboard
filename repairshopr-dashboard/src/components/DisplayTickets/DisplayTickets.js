@@ -8,6 +8,9 @@ import { Paper } from '@material-ui/core';
 
 function DisplayTickets() {
     let [tickets, setTickets] =  useState([]);
+
+    let microchipsTickets = [];
+    let madtechTickets = [];
     
     useEffect(() => {
         axios.defaults.baseURL = 'https://microchipsds.repairshopr.com/api/v1';
@@ -19,23 +22,35 @@ function DisplayTickets() {
         const getData = async () => {
             const result = await axios.get('/tickets', { params: { status: 'Not Closed' } })
             setTickets(result.data.tickets);
+            console.log(result)
         };
-
         getData();
 
-        // axios.get('/tickets', {
-        //     params: {
-        //         status: 'Not Closed'
-        //     }, 
-        // })
-        // .then(res => {
-        //     console.log(res)
-        //     setTickets(res.data.tickets)
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        // })
-    }, [])   
+        
+
+    }, [])
+
+    useEffect(() => {
+        const sortTickets = () => {
+            let array1 = [];
+            let array2 = [];
+            if(tickets) {
+                tickets.forEach(ticket => {
+                    if(ticket.problem_type === "MadTech") {
+                        array1.push(ticket)
+                    } else {
+                        array2.push(ticket)
+                    }
+                })
+            }
+            madtechTickets.push(...array1);
+            microchipsTickets.push(...array2);
+            console.log(madtechTickets);
+            console.log(microchipsTickets);
+        }
+        sortTickets();
+
+    }, [tickets])
 
     function ticketLoop() {
             return (tickets.map(ticket => (
