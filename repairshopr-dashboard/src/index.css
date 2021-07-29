@@ -160,7 +160,7 @@ table {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v93/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/materialicons/v94/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -185,6 +185,7 @@ table {
   align-content: space-between;
 }
 .ticket {
+  width: 160px;
   padding: 1%;
   margin: 1%;
 }
