@@ -49,7 +49,7 @@ function DisplayTickets() {
             console.log(microchipsTickets);
         }
         sortTickets();
-
+        // eslint-disable-next-line
     }, [tickets])
 
     function ticketLoop() {
