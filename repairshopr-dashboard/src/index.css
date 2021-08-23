@@ -160,7 +160,7 @@ table {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v94/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/materialicons/v98/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -176,16 +176,33 @@ table {
   direction: ltr;
 }
 /* Imports */
+body {
+  background-color: #d2d2d2;
+}
 .display-tickets {
   width: 100%;
   height: fit-content;
   padding: 1%;
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
+  justify-content: center;
+  align-content: center;
+}
+.ticketContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+  width: 100%;
+}
+div.MuiPaper-root {
+  background-color: whitesmoke;
 }
 .ticket {
   width: 160px;
   padding: 1%;
   margin: 1%;
+}
+div.MuiCard-root {
+  background-color: white;
 }
