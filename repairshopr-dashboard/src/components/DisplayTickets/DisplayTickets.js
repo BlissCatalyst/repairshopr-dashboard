@@ -6,6 +6,8 @@ import Ticket from "./Ticket/Ticket";
 
 import { Paper } from "@material-ui/core";
 
+import microchipsLogo from "./Microchips.logo.svg";
+
 function DisplayTickets() {
     let [tickets, setTickets] = useState([]);
     let [microchipsTickets, setMicrochipsTickets] = useState([]);
@@ -61,17 +63,26 @@ function DisplayTickets() {
     }
 
     return (
-        <div className="display-all-tickets">
-            {/* Microchips Display */}
-            <Paper variant="outlined" square className="display-tickets">
-                {ticketLoop(microchipsTickets)}
+        <>
+            <Paper square className="logo">
+                <img
+                    className="microchipsLogo"
+                    src={microchipsLogo}
+                    alt="Microchips Logo"
+                />
             </Paper>
+            <div className="display-all-tickets">
+                {/* Microchips Display */}
+                <Paper variant="outlined" square className="display-tickets">
+                    {ticketLoop(microchipsTickets)}
+                </Paper>
 
-            {/* Madtech Display */}
-            <Paper variant="outlined" square className="display-tickets">
-                {ticketLoop(madtechTickets)}
-            </Paper>
-        </div>
+                {/* Madtech Display */}
+                <Paper variant="outlined" square className="display-tickets">
+                    {ticketLoop(madtechTickets)}
+                </Paper>
+            </div>
+        </>
     );
 }
 
