@@ -8,9 +8,8 @@ import { Paper } from "@material-ui/core";
 
 function DisplayTickets() {
     let [tickets, setTickets] = useState([]);
-
-    let microchipsTickets = [];
-    let madtechTickets = [];
+    let [microchipsTickets, setMicrochipsTickets] = useState([]);
+    let [madtechTickets, setMadtechTickets] = useState([]);
 
     useEffect(() => {
         axios.defaults.baseURL = "https://microchipsds.repairshopr.com/api/v1";
@@ -46,8 +45,8 @@ function DisplayTickets() {
                     }
                 });
             }
-            madtechTickets.push(...array1);
-            microchipsTickets.push(...array2);
+            setMadtechTickets(array1);
+            setMicrochipsTickets(array2);
             console.log(madtechTickets);
             console.log(microchipsTickets);
         };
@@ -55,18 +54,24 @@ function DisplayTickets() {
         // eslint-disable-next-line
     }, [tickets]);
 
-    function ticketLoop() {
+    function ticketLoop(tickets) {
         return tickets.map((ticket) => (
             <Ticket key={ticket.number} ticketData={ticket} />
         ));
     }
 
     return (
-        <>
+        <div className="display-all-tickets">
+            {/* Microchips Display */}
             <Paper variant="outlined" square className="display-tickets">
-                <div className="ticketContainer">{ticketLoop()}</div>
+                {ticketLoop(microchipsTickets)}
             </Paper>
-        </>
+
+            {/* Madtech Display */}
+            <Paper variant="outlined" square className="display-tickets">
+                {ticketLoop(madtechTickets)}
+            </Paper>
+        </div>
     );
 }
 

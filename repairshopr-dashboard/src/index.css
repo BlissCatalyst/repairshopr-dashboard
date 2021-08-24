@@ -179,29 +179,24 @@ table {
 body {
   background-color: #d2d2d2;
 }
-.display-tickets {
+.display-all-tickets {
   width: 100%;
   height: fit-content;
-  padding: 1%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
 }
-.ticketContainer {
+.display-tickets {
+  width: 50%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: center;
-  width: 100%;
 }
 div.MuiPaper-root {
   background-color: whitesmoke;
 }
 .ticket {
   width: 160px;
-  padding: 1%;
-  margin: 1%;
+  height: 200px;
+  padding: 10px;
+  margin: 10px;
 }
 div.MuiCard-root {
   background-color: white;
